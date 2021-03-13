@@ -1,0 +1,44 @@
+_BASE_: "../../Base-RCNN-FPN.yaml"
+
+MODEL:
+  WEIGHTS: "checkpoints/voc/split3/model_reset_surgery.pth"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 101
+
+  BACKBONE:
+    FREEZE: True
+    FREEZE_AT: 5
+
+  PROPOSAL_GENERATOR:
+    FREEZE: True
+  RPN:
+    POST_NMS_TOPK_TRAIN: 2000
+
+  ROI_HEADS:
+    NUM_CLASSES: 20
+    OUTPUT_LAYER: "CosineSimOutputLayers"
+    FREEZE_FEAT: True
+    UNFREEZE_FC2: True
+    BATCH_SIZE_PER_IMAGE: 256
+
+INPUT:
+  MIN_SIZE_TRAIN: (480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800)
+  MIN_SIZE_TEST: 800
+
+DATASETS:
+  TRAIN: ('voc_2007_trainval_all3_1shot',)
+  TEST: ('voc_2007_test_all3',)
+
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.001
+  STEPS: (6000,)
+  MAX_ITER: 8000
+  CHECKPOINT_PERIOD: 5000
+  WARMUP_ITERS: 20
+
+TEST:
+  EVAL_PERIOD: 700
+
+OUTPUT_DIR: "checkpoints/voc/ablation/split3/1shot_baseline"

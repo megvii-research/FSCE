@@ -1,0 +1,22 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+SEED: 42  # increase reproducibility but not necessary deterministic
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/X-101-32x8d.pkl"
+  MASK_ON: False
+  PIXEL_STD: [57.375, 57.120, 58.395]  # [1,1,1] for any MSRA model
+  RESNETS:
+    DEPTH: 101
+    STRIDE_IN_1X1: False  # C2 model
+    NUM_GROUPS: 32
+    WIDTH_PER_GROUP: 8
+  ROI_HEADS:
+    NUM_CLASSES: 60
+DATASETS:
+  TRAIN: ('coco_trainval_base',)
+  TEST: ('coco_test_base',)
+SOLVER:
+  IMS_PER_BATCH: 16
+  STEPS: (120000, 130000)  # longer than R101
+  MAX_ITER: 140000
+  CHECKPOINT_PERIOD: 10000
+OUTPUT_DIR: "checkpoints/coco/faster_rcnn/X101_FPN_base"

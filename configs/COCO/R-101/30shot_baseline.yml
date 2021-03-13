@@ -1,0 +1,42 @@
+_BASE_: "../../Base-RCNN-FPN.yaml"
+
+MODEL:
+  MASK_ON: False
+  WEIGHTS: "/data/FSCE/checkpoints/COCO/R101/model_reset_surgery.pth"
+  RESNETS:
+    DEPTH: 101
+
+  BACKBONE:
+    FREEZE: False
+    FREEZE_AT: 5
+
+  PROPOSAL_GENERATOR:
+    FREEZE: False
+  RPN:
+    POST_NMS_TOPK_TRAIN: 2000
+
+  ROI_HEADS:
+    NUM_CLASSES: 80
+    OUTPUT_LAYER: "CosineSimOutputLayers"
+    FREEZE_FEAT: False
+    BATCH_SIZE_PER_IMAGE: 256 # do increased positive fraction help? Yes, it does.
+
+DATASETS:
+  TRAIN: ('coco_trainval_all_30shot',)
+  TEST: ('coco_test_all',)
+
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.001
+  GAMMA: 0.3
+  STEPS: (30000,)
+  MAX_ITER: 40000
+  CHECKPOINT_PERIOD: 10000
+  WARMUP_ITERS: 200
+
+TEST:
+  AUG:
+    ENABLED: True
+  EVAL_PERIOD: 5000
+
+OUTPUT_DIR: "checkpoints/coco/R101/30"
