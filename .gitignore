@@ -38,8 +38,6 @@ wheels/
 # Byte-compiled / optimized / DLL files
 output/ 
 log/ 
-data/
-datasets/ 
 checkpoints/
 hrnetv2_pretrained/
 __pycache__/

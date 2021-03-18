@@ -63,7 +63,7 @@ We adopt the same benchmarks as in FsDet, including three datasets: PASCAL VOC, 
 - [COCO](http://cocodataset.org/): We use COCO 2014 without COCO minival for training and the 5,000 images in COCO minival for testing. We use the 20 object classes that are the same with PASCAL VOC as novel classes and use the rest as base classes.
 - [LVIS](https://www.lvisdataset.org/): We treat the frequent and common classes as the base classes and the rare categories as the novel classes.
 
-The datasets and data splits are built-in, simply make sure the directory structure agrees with [datasets/README.md](https://github.com/ucbdrive/few-shot-object-detection/blob/master/datasets/README.md) to launch the program. 
+The datasets and data splits are built-in, simply make sure the directory structure agrees with [datasets/README.md](datasets/README.md) to launch the program. 
 
 
 
