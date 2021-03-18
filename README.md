@@ -5,6 +5,29 @@ This repo contains the implementation of our *state-of-the-art* fewshot object d
 
 ![FSCE Figure](https://i.imgur.com/zrOSKoi.png)
 
+### Bibtex
+
+```
+@inproceedings{FSCEv1,
+ author = {Sun, Bo and Li, Banghuai and Cai, Shengcai and Yuan, Ye and Zhang, Chi},
+ title = {FSCE: Few-Shot Object Detection via Contrastive Proposal Encoding},
+ booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition (CVPR)},
+ pages    = {TBD},
+ month = {June},
+ year = {2021}
+}
+```
+
+Arxiv: https://arxiv.org/abs/2103.05950
+
+## Contact
+
+```
+If you have any questions, please contact Bo Sun (bos [at] usc.edu) or Banghuai Li(libanghuai [at] megvii.com)
+```
+
+
+
 ## Installation
 
 FsDet is built on [Detectron2](https://github.com/facebookresearch/detectron2). But you don't need to build detectron2 seperately as this codebase is self-contained. You can follow the instructions below to install the dependencies and build `FsDet`. FSCE functionalities are implemented as `class`and `.py` scripts in FsDet which therefore requires no extra build efforts. 
