@@ -65,6 +65,8 @@ We adopt the same benchmarks as in FsDet, including three datasets: PASCAL VOC, 
 
 The datasets and data splits are built-in, simply make sure the directory structure agrees with [datasets/README.md](datasets/README.md) to launch the program. 
 
+The default seed that is used to report performace in research papers can be found [here](http://dl.yf.io/fs-det/datasets/).
+
 
 
 ## Code Structure
